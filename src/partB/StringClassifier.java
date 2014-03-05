@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.zhangshe.hw5;
+package partB;
 
 /**
  * Objects that classify strings.  Useful for DNF.

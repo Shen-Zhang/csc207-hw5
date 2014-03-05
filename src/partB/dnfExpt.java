@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.zhangshe.hw5;
+package partB;
 
 public class dnfExpt
 {
@@ -6,7 +6,8 @@ public class dnfExpt
     throws Exception
   {
     SimpleStringSizeClassifier x = new SimpleStringSizeClassifier();
-
+    ClassifyStringsByFirstCharacter y = new ClassifyStringsByFirstCharacter();
+    
     String[] strArr =
         { "12345", "s", "dsadsadasdadas", "dsadsadsad", "sd", "67890", "dsa" };
 
@@ -16,6 +17,17 @@ public class dnfExpt
       {
         System.out.print(strArr[i] + " ");
       }
-
+    System.out.println("");
+    
+    String[] strY =
+      { "12345", "s", "Dsadsadasdadas", "dsadsadsad", "Dd", "67890", "dsa" };
+    
+    DutchNationalFlag.dnf(strY, y);
+    for (int i = 0; i < strY.length; i++)
+      {
+        System.out.print(strY[i] + " ");
+      }
+    
+    
   } // man
 } // class dnfExpt

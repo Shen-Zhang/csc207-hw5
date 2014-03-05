@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.zhangshe.hw5;
+package partB;
 
 /**
  * Classify strings as red (fewer than 5 characters), white (5

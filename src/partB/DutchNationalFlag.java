@@ -1,4 +1,4 @@
-package edu.grinnell.csc207.zhangshe.hw5;
+package partB;
 
 public class DutchNationalFlag
 {
