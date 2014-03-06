@@ -1,4 +1,5 @@
 package partD;
+
 public class Exponentiation
 {
   /**
@@ -14,16 +15,17 @@ public class Exponentiation
     if (n == 1)
       return x;
 
-    
     double rslt = 1;
     while (n > 0)
       {
-        if ((n & 1) == 1) 
-          rslt *= x;
+        if ((n & 1) == 1) // if n is an odd
+          {
+            rslt *= x;
+          } // if 
 
         x *= x;
         n >>= 1;
-      }
+      } // while
     return rslt;
   } // expt(double, int)
-}
+} // class Exponentiation

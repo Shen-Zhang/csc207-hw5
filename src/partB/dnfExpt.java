@@ -16,7 +16,7 @@ public class dnfExpt
     for (int i = 0; i < strArr.length; i++)
       {
         System.out.print(strArr[i] + " ");
-      }
+      } // for(i)
     System.out.println("");
     
     String[] strY =
@@ -26,8 +26,8 @@ public class dnfExpt
     for (int i = 0; i < strY.length; i++)
       {
         System.out.print(strY[i] + " ");
-      }
+      } // (for i)
     
     
-  } // man
+  } // main
 } // class dnfExpt

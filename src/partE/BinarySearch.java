@@ -30,7 +30,7 @@ public class BinarySearch
 
         if (vals[mid] == i)
           {
-            return index = mid;
+            return index = mid; 
           } // if
         else if (vals[mid] < i)
           {
@@ -48,4 +48,4 @@ public class BinarySearch
     return index;
 
   } // binarySearch
-}
+} // class BinarySearch

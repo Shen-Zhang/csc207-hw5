@@ -4,6 +4,11 @@ package partC;
  * Skip lists of strings, stored alphabetically.
  */
 
+/*
+ * Citation: Skip Lists: A Probabilistic Alternative to Balanced Trees by
+ * William Pugh Skip list (Java) http://en.literateprograms.org/Skip_list_(Java)
+ */
+
 public class SkipListOfStrings
     implements
       SetOfStrings
@@ -11,17 +16,20 @@ public class SkipListOfStrings
   public static final double P = 0.5;
   public static final int maxLevel = 16;
 
+  skipListNode head = new skipListNode(null, maxLevel);
+  int level = 0;
+
   // +--------+------------------------------------------------------
   // | Helper |
   // +--------+
+  /**
+   * A helper to assign level for node
+   */
   public int randomLevel()
   {
     int lvl = (int) (Math.log(1. - Math.random()) / Math.log(1. - P));
     return Math.min(lvl, maxLevel);
-  }
-
-  skipListNode head = new skipListNode(null, maxLevel);
-  int level = 0;
+  } // randomlevel()
 
   // +--------+------------------------------------------------------
   // | Method |
@@ -35,12 +43,13 @@ public class SkipListOfStrings
         while (s.next[i] != null && s.next[i].data.compareTo(str) < 0)
           {
             s = s.next[i];
+            // if the str is not found, then go to the next one (if exists)
           } // while
       } // for(i)
+
     s = s.next[0];
     return s != null && s.data.equals(str);
-
-  }
+  } // contains(String)
 
   @Override
   public void add(String str)
@@ -53,6 +62,7 @@ public class SkipListOfStrings
         while (s.next[i] != null && s.next[i].data.compareTo(str) < 0)
           {
             s = s.next[i];
+            // if the str is not found, then go to the next one (if exists)
           } // while
         newSkip[i] = s;
       } // for(i)
@@ -61,17 +71,18 @@ public class SkipListOfStrings
     if (s == null || s.data.equals(str))
       {
         int lvl = this.randomLevel();
+        // use randomLevel to assign level for this node
 
         if (lvl > level)
           {
             for (int i = level + 1; i <= lvl; i++)
               {
                 newSkip[i] = head;
-              }
+              } // for(i)
             level = lvl;
-          }
+          } // if
 
-        s = new skipListNode(str, lvl);
+        s = new skipListNode(str, lvl); // a new node
         for (int c = 0; c <= lvl; c++)
           {
             s.next[c] = newSkip[c].next[c];
@@ -96,7 +107,7 @@ public class SkipListOfStrings
       } // for(i)
     s = s.next[0];
 
-    if (s.data.equals(str))
+    if (s.data.equals(str)) // if the node is found
       {
         for (int i = 0; i <= level; i++)
           {
@@ -106,9 +117,9 @@ public class SkipListOfStrings
           } // for(i)
         while (level > 0 && this.head.next[level] == null)
           {
-            level--;
+            level--; // decrease the level
           } // while
       } // if
+  } // remove(String)
 
-  }
 } // class SkipListOfStrings
