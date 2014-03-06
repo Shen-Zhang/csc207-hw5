@@ -22,17 +22,18 @@ public class Exponentiation
      * loop invariant:
      * x^n = rslt * a^k
      */
+    
     while (k > 0)
       if (k % 2 == 0)
         {
           k = k / 2;
           a = a * a;
-        }
+        } // if
       else
         {
           rslt = rslt * a;
           k = k - 1;
-        }
+        } // else
     return rslt;
   } // expt(double, int)
 } // class Exponentiation
