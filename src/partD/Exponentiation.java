@@ -16,16 +16,23 @@ public class Exponentiation
       return x;
 
     double rslt = 1;
-    while (n > 0)
-      {
-        if ((n & 1) == 1) // if n is an odd
-          {
-            rslt *= x;
-          } // if 
-
-        x *= x;
-        n >>= 1;
-      } // while
+    int k = n;
+    double a = x;
+    /* 
+     * loop invariant:
+     * x^n = rslt * a^k
+     */
+    while (k > 0)
+      if (k % 2 == 0)
+        {
+          k = k / 2;
+          a = a * a;
+        }
+      else
+        {
+          rslt = rslt * a;
+          k = k - 1;
+        }
     return rslt;
   } // expt(double, int)
 } // class Exponentiation
